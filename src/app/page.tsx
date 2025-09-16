@@ -1,7 +1,12 @@
+import Navbar from "@/components/navbar";
+
 export default function Home() {
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-900 text-white">
-      <h1 className="text-5xl font-bold text-red-500">Premium Portfolio 🚀</h1>
-    </div>
-  )
+    <main className="min-h-screen bg-black text-white">
+      <Navbar />
+      <section className="flex items-center justify-center h-[80vh]">
+        <h1 className="text-5xl font-bold">Welcome to My Portfolio 🚀</h1>
+      </section>
+    </main>
+  );
 }
