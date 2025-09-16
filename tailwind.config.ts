@@ -11,6 +11,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+       fontFamily: {
+      heading: ["Playfair Display", "serif"],
+      body: ["Inter", "sans-serif"], // smooth modern body font
+    },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
