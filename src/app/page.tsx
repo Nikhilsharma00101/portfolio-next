@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar";
 import Hero from "@/components/herosection/hero";
 import DraggableCards  from "@/components/aboutsection/AboutSection";
+import OrbitingSkills  from "@/components/skillssection/skills";
 
 export default function Home() {
   return (
@@ -11,7 +12,10 @@ export default function Home() {
       {/* Hero Section */}
       <Hero />
 
+      {/* About Section */}
       <DraggableCards />
+      {/* Skills Section */}
+      <OrbitingSkills />
     </main>
   );
 }
