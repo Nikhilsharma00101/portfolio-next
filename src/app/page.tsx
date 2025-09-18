@@ -3,6 +3,7 @@ import Hero from "@/components/herosection/hero";
 import DraggableCards  from "@/components/aboutsection/AboutSection";
 import OrbitingSkills  from "@/components/skillssection/skills";
 import ProjectCarousel from "@/components/projectsection/project";
+import TimelineGalaxy from "@/components/projectplanning/TimelineGalaxy";
 
 export default function Home() {
   return (
@@ -17,6 +18,8 @@ export default function Home() {
       <OrbitingSkills />
       {/* Projects Section */}
       <ProjectCarousel />
+      {/* Project Planning Section */}
+      <TimelineGalaxy />
     </main>
   );
 }
