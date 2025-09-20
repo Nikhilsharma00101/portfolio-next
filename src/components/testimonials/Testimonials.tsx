@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -14,12 +14,12 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     name: "Mr. Rohan",
-    role: "Software Engineer ",
+    role: "Software Engineer",
     text: "Bro, working with you to build my portfolio was amazing! It looks professional, sleek, and really shows off my work. I’ve already gotten so many compliments. You made everything so easy to understand and perfectly executed!",
     avatar: "/images/testimonials/rohan.jpeg",
   },
   {
-    name: " Mr. H.L Sharma",
+    name: "Mr. H.L Sharma",
     role: "Owner - Karbhawan",
     text: "The Karbhawan site is modern, elegant, and runs smoothly. The design and layout show attention to detail, making it both practical and visually appealing.",
     avatar: "/images/testimonials/hl-sharma.jpeg",
@@ -33,20 +33,26 @@ const testimonials: Testimonial[] = [
 ];
 
 const SpaceshipWindowsTestimonials = () => {
+  const [starPositions, setStarPositions] = useState<{ top: string; left: string; size: string }[]>([]);
+
+  useEffect(() => {
+    const positions = Array.from({ length: 40 }).map(() => ({
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      size: `${Math.random() * 2 + 1}px`,
+    }));
+    setStarPositions(positions);
+  }, []);
+
   return (
     <section className="relative pb-10 bg-black text-white overflow-hidden">
       {/* Background Twinkling Stars */}
       <div className="absolute inset-0 z-0">
-        {Array.from({ length: 40 }).map((_, i) => (
+        {starPositions.map((star, i) => (
           <motion.div
             key={i}
             className="absolute bg-white rounded-full"
-            style={{
-              width: `${Math.random() * 2 + 1}px`,
-              height: `${Math.random() * 2 + 1}px`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-            }}
+            style={{ width: star.size, height: star.size, top: star.top, left: star.left }}
             animate={{ opacity: [0.2, 1, 0.2] }}
             transition={{
               duration: Math.random() * 2 + 1,
@@ -59,7 +65,7 @@ const SpaceshipWindowsTestimonials = () => {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        <span className="text-3xl md:text-5xl font-bold mb-15 text-center font-heading bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-transparent animate-gradient pb-5">
+        <span className="text-3xl md:text-5xl font-bold mb-4 md:mb-15 text-center font-heading bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-transparent animate-gradient pb-5">
           Window to the Cosmos
         </span>
 
@@ -71,9 +77,7 @@ const SpaceshipWindowsTestimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.2 }}
               viewport={{ once: true }}
-              className={`relative flex flex-col items-center ${
-                i === 0 || i === 2 ? "h-full" : ""
-              }`}
+              className={`relative flex flex-col items-center ${i === 0 || i === 2 ? "h-full" : ""}`}
             >
               {/* Spaceship Window Frame */}
               <div className="relative w-48 h-48 rounded-full border-[6px] border-sky-400/60 shadow-[0_0_30px_rgba(100,200,255,0.4)] bg-gradient-to-b from-gray-900 to-black overflow-hidden flex items-center justify-center md:mt-20">
@@ -92,7 +96,7 @@ const SpaceshipWindowsTestimonials = () => {
 
               {/* Testimonial Card */}
               <div
-                className={`mt-6 relative bg-black/20 border border-white/20 rounded-xl p-4 backdrop-blur-lg  shadow-[0_0_30px_rgba(0,200,255,0.3)] max-w-xs flex flex-col ${
+                className={`mt-4 md:mt-6 relative bg-black/20 border border-white/20 rounded-xl p-4 backdrop-blur-lg shadow-[0_0_30px_rgba(0,200,255,0.3)] max-w-xs flex flex-col ${
                   i === 0 || i === 2 ? "justify-between flex-1" : ""
                 }`}
               >
