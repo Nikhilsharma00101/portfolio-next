@@ -5,6 +5,7 @@ import OrbitingSkills  from "@/components/skillssection/skills";
 import ProjectCarousel from "@/components/projectsection/project";
 import TimelineGalaxy from "@/components/projectplanning/TimelineGalaxy";
 import Testimonials from "@/components/testimonials/Testimonials";
+import CertificateCarousel from "@/components/certificates/certificates";
 
 export default function Home() {
   return (
@@ -23,6 +24,8 @@ export default function Home() {
       <TimelineGalaxy />
       {/* Testimonials Section */}
       <Testimonials />
+      {/* Certificate Section */}
+      <CertificateCarousel/>
     </main>
   );
 }
