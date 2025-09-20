@@ -33,15 +33,29 @@ const testimonials: Testimonial[] = [
 ];
 
 const SpaceshipWindowsTestimonials = () => {
+  // Background stars
   const [starPositions, setStarPositions] = useState<{ top: string; left: string; size: string }[]>([]);
+  // Stars inside testimonial cards
+  const [cardStars, setCardStars] = useState<{ top: string; left: string; size: string }[][]>([]);
 
   useEffect(() => {
+    // background stars
     const positions = Array.from({ length: 40 }).map(() => ({
       top: `${Math.random() * 100}%`,
       left: `${Math.random() * 100}%`,
       size: `${Math.random() * 2 + 1}px`,
     }));
     setStarPositions(positions);
+
+    // card stars
+    const stars = testimonials.map(() =>
+      Array.from({ length: 8 }).map(() => ({
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        size: `${Math.random() * 2 + 1}px`,
+      }))
+    );
+    setCardStars(stars);
   }, []);
 
   return (
@@ -101,15 +115,15 @@ const SpaceshipWindowsTestimonials = () => {
                 }`}
               >
                 {/* Stars inside card */}
-                {Array.from({ length: 8 }).map((_, idx) => (
+                {cardStars[i]?.map((star, idx) => (
                   <motion.div
                     key={idx}
                     className="absolute bg-white rounded-full"
                     style={{
-                      width: `${Math.random() * 2 + 1}px`,
-                      height: `${Math.random() * 2 + 1}px`,
-                      top: `${Math.random() * 100}%`,
-                      left: `${Math.random() * 100}%`,
+                      width: star.size,
+                      height: star.size,
+                      top: star.top,
+                      left: star.left,
                       opacity: 0.3,
                     }}
                     animate={{ opacity: [0.1, 0.5, 0.1] }}
