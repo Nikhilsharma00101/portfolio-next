@@ -114,10 +114,11 @@ export default function OrbitingSkills() {
               const gap = 60;
               const orbitRadius = baseRadius + i * gap;
               const size = 50;
-              const duration = 18 + i * 4;
+              const orbitDuration = 18 + i * 4;
+              const selfRotationDuration = 6;
 
               return (
-                <motion.div
+                <div
                   key={item.name}
                   className="absolute flex items-center justify-center pointer-events-none"
                   style={{
@@ -126,8 +127,6 @@ export default function OrbitingSkills() {
                     left: `calc(50% - ${orbitRadius}px)`,
                     top: `calc(50% - ${orbitRadius}px)`,
                   }}
-                  animate={{ rotate: 360 }}
-                  transition={{ repeat: Infinity, duration, ease: "linear" }}
                 >
                   {/* Orbit Ring */}
                   <div
@@ -135,39 +134,36 @@ export default function OrbitingSkills() {
                     style={{ width: orbitRadius * 2, height: orbitRadius * 2 }}
                   />
 
-                  {/* Planet */}
-                  <motion.div
-                    className="absolute flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 shadow-[0_0_30px_rgba(0,255,255,0.8)] cursor-pointer z-[60] pointer-events-auto"
-                    style={{
-                      width: size,
-                      height: size,
-                      top: -size / 2,
-                      left: `calc(50% - ${size / 2}px)`,
-                    }}
-                    onMouseEnter={() => setHovered(item.name)}
-                    onMouseLeave={() => setHovered(null)}
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1, transition: { delay: 0.4 + i * 0.1 } }}
-                    exit={{ scale: 0, opacity: 0 }}
+                  {/* Orbit Container */}
+                  <div
+                    className="absolute top-0 left-0 w-full h-full animate-orbit"
+                    style={{ animationDuration: `${orbitDuration}s` }}
                   >
-                    <Image src={item.icon} alt={item.name} width={size - 10} height={size - 10} />
+                    {/* Planet */}
+                    <div
+                      className="absolute flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 shadow-[0_0_30px_rgba(0,255,255,0.8)] cursor-pointer z-[60] pointer-events-auto animate-spin"
+                      style={{
+                        width: size,
+                        height: size,
+                        top: -size / 2,
+                        left: `calc(50% - ${size / 2}px)`,
+                        animationDuration: `${selfRotationDuration}s`,
+                      }}
+                      onMouseEnter={() => setHovered(item.name)}
+                      onMouseLeave={() => setHovered(null)}
+                    >
+                      <Image src={item.icon} alt={item.name} width={size - 10} height={size - 10} />
 
-                    {/* Tooltip */}
-                    {hovered === item.name && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        className="absolute -top-20 left-1/2 -translate-x-1/2 w-48 p-3 text-sm 
-                                   bg-black/80 backdrop-blur-md border border-cyan-500 
-                                   text-cyan-100 rounded-lg shadow-xl z-[999]"
-                      >
-                        <p className="font-bold">{item.name}</p>
-                        <p className="text-xs text-cyan-200 mt-1">{item.desc}</p>
-                      </motion.div>
-                    )}
-                  </motion.div>
-                </motion.div>
+                      {/* Tooltip */}
+                      {hovered === item.name && (
+                        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-48 p-3 text-sm bg-black/80 backdrop-blur-md border border-cyan-500 text-cyan-100 rounded-lg shadow-xl z-[999]">
+                          <p className="font-bold">{item.name}</p>
+                          <p className="text-xs text-cyan-200 mt-1">{item.desc}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
               );
             })}
           </motion.div>
@@ -195,6 +191,20 @@ export default function OrbitingSkills() {
           />
         ))}
       </div>
+
+      {/* Orbit & Spin animations */}
+      <style jsx>{`
+        @keyframes orbit {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        .animate-orbit { animation-name: orbit; animation-iteration-count: infinite; animation-timing-function: linear; }
+        .animate-spin { animation-name: spin; animation-iteration-count: infinite; animation-timing-function: linear; }
+      `}</style>
     </section>
   );
 }
