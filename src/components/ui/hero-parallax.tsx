@@ -1,21 +1,11 @@
 "use client";
 import React from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  MotionValue,
-  useMotionValueEvent,
-} from "motion/react";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "motion/react";
 
 export const HeroParallax = ({
   products,
 }: {
-  products: {
-    title: string;
-    link: string;
-    thumbnail: string;
-  }[];
+  products: { title: string; link: string; thumbnail: string }[];
 }) => {
   const firstRow = products.slice(0, 5);
   const secondRow = products.slice(5, 10);
@@ -41,86 +31,54 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[200vh] overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[200vh] overflow-hidden antialiased relative flex flex-col [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
-      <motion.div
-        style={{
-          rotateX,
-          rotateZ,
-          translateY,
-          opacity,
-        }}
-      >
-        <InfiniteRow
-          products={firstRow}
-          direction="right"
-          swipeEnabled={swipeEnabled}
-        />
-        <InfiniteRow
-          products={secondRow}
-          direction="left"
-          swipeEnabled={swipeEnabled}
-        />
-        <InfiniteRow
-          products={thirdRow}
-          direction="right"
-          swipeEnabled={swipeEnabled}
-        />
+      <motion.div style={{ rotateX, rotateZ, translateY, opacity }}>
+        <InfiniteRow products={firstRow} direction="right" swipeEnabled={swipeEnabled} />
+        <InfiniteRow products={secondRow} direction="left" swipeEnabled={swipeEnabled} />
+        <InfiniteRow products={thirdRow} direction="right" swipeEnabled={swipeEnabled} />
       </motion.div>
     </div>
   );
 };
 
-// Optimized Infinite Row
+// Full-row sliding animation
 const InfiniteRow = ({
   products,
   direction,
   swipeEnabled,
 }: {
-  products: {
-    title: string;
-    link: string;
-    thumbnail: string;
-  }[];
+  products: { title: string; link: string; thumbnail: string }[];
   direction: "left" | "right";
   swipeEnabled: boolean;
 }) => {
   const rowRef = React.useRef<HTMLDivElement>(null);
 
-  // Compute duplicated array only enough to cover screen
+  // Duplicate products to ensure seamless infinite scroll
   const displayProducts = [...products, ...products];
+
+  // Calculate row width dynamically for animation
+  const totalWidth = displayProducts.length * 320; // adjust based on ProductCard width + spacing
 
   return (
     <motion.div
       ref={rowRef}
-      className={`flex ${
-        direction === "right"
-          ? "flex-row-reverse space-x-reverse"
-          : "flex-row"
-      } space-x-20 mb-20`}
+      className={`flex ${direction === "right" ? "flex-row-reverse" : "flex-row"} space-x-8 mb-20`}
       drag={swipeEnabled ? "x" : false}
       dragConstraints={{ left: -500, right: 500 }}
       whileTap={{ cursor: swipeEnabled ? "grabbing" : "default" }}
+      animate={{
+        x: direction === "right" ? [0, totalWidth / 2] : [0, -totalWidth / 2],
+      }}
+      transition={{
+        duration: 40, // slower to allow each slide to appear
+        ease: "linear",
+        repeat: Infinity,
+      }}
     >
       {displayProducts.map((product, idx) => (
-        <motion.div
-          key={`${product.title}-${idx}`}
-          style={{ willChange: "transform" }}
-          animate={{
-            x:
-              direction === "right"
-                ? [0, 600] // slower and smoother
-                : [0, -600],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        >
-          <ProductCard product={product} />
-        </motion.div>
+        <ProductCard key={`${product.title}-${idx}`} product={product} />
       ))}
     </motion.div>
   );
@@ -166,15 +124,10 @@ export const Header = () => {
   );
 };
 
-
 export const ProductCard = ({
   product,
 }: {
-  product: {
-    title: string;
-    link: string;
-    thumbnail: string;
-  };
+  product: { title: string; link: string; thumbnail: string };
 }) => {
   return (
     <motion.div
@@ -188,7 +141,7 @@ export const ProductCard = ({
           height="600"
           width="600"
           loading="lazy"
-          className="object-cover object-left-top absolute h-full w-full inset-0"
+          className="object-contain object-left-top absolute h-full w-full inset-0"
           alt={product.title}
         />
       </a>

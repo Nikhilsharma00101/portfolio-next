@@ -8,34 +8,34 @@ export default function Hero() {
 
 const products = [
   {
-    title: "Moonbeam",
+    title: "Business",
     link: "https://gomoonbeam.com",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/moonbeam.png",
+      "/images/hero/rogue-motors.svg",
   },
   {
-    title: "Cursor",
+    title: "E-commerce",
     link: "https://cursor.so",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/cursor.png",
+      "/images/hero/karbhawan-next.svg",
   },
   {
-    title: "Rogue",
+    title: "Landing page",
     link: "https://userogue.com",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/rogue.png",
+      "/images/hero/premium-landing-page.svg",
   },
   {
-    title: "Editorially",
+    title: "Static Website",
     link: "https://editorially.org",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/editorially.png",
+      "/images/hero/buydsc.svg",
   },
   {
-    title: "Editrix AI",
+    title: "Portfolio",
     link: "https://editrix.ai",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/editrix.png",
+      "/images/hero/portfolio.svg",
   },
   {
     title: "Pixel Perfect",
@@ -44,16 +44,16 @@ const products = [
       "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png",
   },
   {
-    title: "Algochurn",
+    title: "Law Firm ",
     link: "https://algochurn.com",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/algochurn.png",
+      "/images/hero/lawfirm.svg",
   },
   {
-    title: "Aceternity UI",
+    title: "Skillnox - Mobile APP",
     link: "https://ui.aceternity.com",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
+      "/images/hero/skillnox.svg",
   },
   {
     title: "Tailwind Master Kit",
