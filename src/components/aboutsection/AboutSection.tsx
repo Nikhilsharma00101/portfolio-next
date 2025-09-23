@@ -79,37 +79,39 @@ export default function PremiumAboutMeSection() {
   return (
     <section className="w-full min-h-[90vh] flex flex-col justify-center items-center relative overflow-hidden bg-black">
       {/* Heading */}
-      <h2 className="relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-500 mb-16 tracking-wide">
+      <h2 className="relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-500 mb-16 tracking-wide font-heading">
         About Me
         <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-1 bg-blue-400/60 rounded-full blur-md"></span>
       </h2>
 
       {/* Profile with glowing rings */}
-      <div className="relative flex justify-center items-center mb-20 z-10">
-        <div className="relative w-56 h-56 flex justify-center items-center">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 35, ease: "linear" }}
-            className="absolute w-72 h-72 border border-blue-400/40 rounded-full"
-            style={{ boxShadow: "0 0 60px rgba(59,130,246,0.4)" }}
+      <div className="relative w-56 h-56 flex justify-center items-center">
+        {/* Gradient halo */}
+        <div className="absolute w-60 h-60 rounded-full bg-gradient-to-tr from-blue-500 via-cyan-400 to-purple-500 opacity-20" />
+
+        {/* Glowing rings */}
+        <div
+          className="absolute w-72 h-72 border border-blue-400/40 rounded-full"
+          style={{ boxShadow: "0 0 60px rgba(59,130,246,0.4)" }}
+        />
+        <div
+          className="absolute w-64 h-64 border border-cyan-400/30 rounded-full"
+          style={{ boxShadow: "0 0 40px rgba(14,165,233,0.3)" }}
+        />
+
+        {/* Profile Image */}
+        <div className="w-56 h-56 rounded-full overflow-hidden border-4 border-blue-400/60 shadow-xl shadow-blue-500/50 relative">
+          <Image
+            src="/images/myself.png"
+            alt="Profile Picture"
+            fill
+            className="object-cover object-[50%_0%]" // custom X% Y% positioning
           />
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ repeat: Infinity, duration: 45, ease: "linear" }}
-            className="absolute w-64 h-64 border border-cyan-400/30 rounded-full"
-            style={{ boxShadow: "0 0 40px rgba(14,165,233,0.3)" }}
-          />
-          <div className="w-56 h-56 rounded-full overflow-hidden border-4 border-blue-400/60 shadow-xl shadow-blue-500/50">
-            <Image
-              src="/images/profile.png"
-              alt="Profile Picture"
-              width={224}
-              height={224}
-              className="object-cover w-full h-full"
-            />
-          </div>
         </div>
+
       </div>
+
+
 
       {/* Desktop custom-position cards */}
       <div className="hidden md:block absolute inset-0 pointer-events-none">
