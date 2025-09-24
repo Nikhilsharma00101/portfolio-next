@@ -1,12 +1,17 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "motion/react";
 
-export const HeroParallax = ({
-  products,
-}: {
-  products: { title: string; link: string; thumbnail: string }[];
-}) => {
+// Updated types
+type Product = {
+  id: string;
+  title: string;
+  thumbnail: string;
+  videoUrl?: string; // optional, can be used in dynamic page
+};
+
+export const HeroParallax = ({ products }: { products: Product[] }) => {
   const firstRow = products.slice(0, 5);
   const secondRow = products.slice(5, 10);
   const thirdRow = products.slice(10, 15);
@@ -31,17 +36,36 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[200vh] overflow-hidden antialiased relative flex flex-col [perspective:1000px] [transform-style:preserve-3d]"
+      className="overflow-hidden antialiased relative flex flex-col [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div style={{ rotateX, rotateZ, translateY, opacity }}>
-        <InfiniteRow products={firstRow} direction="right" swipeEnabled={swipeEnabled} />
-        <InfiniteRow products={secondRow} direction="left" swipeEnabled={swipeEnabled} />
-        <InfiniteRow products={thirdRow} direction="right" swipeEnabled={swipeEnabled} />
+        {firstRow.length > 0 && (
+          <InfiniteRow
+            products={firstRow}
+            direction="right"
+            swipeEnabled={swipeEnabled}
+          />
+        )}
+        {secondRow.length > 0 && (
+          <InfiniteRow
+            products={secondRow}
+            direction="left"
+            swipeEnabled={swipeEnabled}
+          />
+        )}
+        {thirdRow.length > 0 && (
+          <InfiniteRow
+            products={thirdRow}
+            direction="right"
+            swipeEnabled={swipeEnabled}
+          />
+        )}
       </motion.div>
     </div>
   );
 };
+
 
 // Full-row sliding animation
 const InfiniteRow = ({
@@ -49,17 +73,14 @@ const InfiniteRow = ({
   direction,
   swipeEnabled,
 }: {
-  products: { title: string; link: string; thumbnail: string }[];
+  products: Product[];
   direction: "left" | "right";
   swipeEnabled: boolean;
 }) => {
   const rowRef = React.useRef<HTMLDivElement>(null);
 
-  // Duplicate products to ensure seamless infinite scroll
-  const displayProducts = [...products, ...products];
-
-  // Calculate row width dynamically for animation
-  const totalWidth = displayProducts.length * 320; // adjust based on ProductCard width + spacing
+  const displayProducts = [...products, ...products]; // duplicate for seamless scroll
+  const totalWidth = displayProducts.length * 320;
 
   return (
     <motion.div
@@ -68,17 +89,11 @@ const InfiniteRow = ({
       drag={swipeEnabled ? "x" : false}
       dragConstraints={{ left: -500, right: 500 }}
       whileTap={{ cursor: swipeEnabled ? "grabbing" : "default" }}
-      animate={{
-        x: direction === "right" ? [0, totalWidth / 2] : [0, -totalWidth / 2],
-      }}
-      transition={{
-        duration: 40, // slower to allow each slide to appear
-        ease: "linear",
-        repeat: Infinity,
-      }}
+      animate={{ x: direction === "right" ? [0, totalWidth / 2] : [0, -totalWidth / 2] }}
+      transition={{ duration: 40, ease: "linear", repeat: Infinity }}
     >
       {displayProducts.map((product, idx) => (
-        <ProductCard key={`${product.title}-${idx}`} product={product} />
+        <ProductCard key={`${product.id}-${idx}`} product={product} />
       ))}
     </motion.div>
   );
@@ -124,27 +139,24 @@ export const Header = () => {
   );
 };
 
-export const ProductCard = ({
-  product,
-}: {
-  product: { title: string; link: string; thumbnail: string };
-}) => {
+export const ProductCard = ({ product }: { product: Product }) => {
+  const router = useRouter();
+
   return (
     <motion.div
       whileHover={{ y: -20 }}
-      className="group/product h-48 w-64 sm:h-64 sm:w-80 md:h-96 md:w-[30rem] relative shrink-0"
+      className="group/product h-48 w-64 sm:h-64 sm:w-80 md:h-96 md:w-[30rem] relative shrink-0 cursor-pointer"
       style={{ willChange: "transform" }}
+      onClick={() => router.push(`/projects/${product.id}`)}
     >
-      <a href={product.link} className="block group-hover/product:shadow-2xl">
-        <img
-          src={product.thumbnail}
-          height="600"
-          width="600"
-          loading="lazy"
-          className="object-contain object-left-top absolute h-full w-full inset-0"
-          alt={product.title}
-        />
-      </a>
+      <img
+        src={product.thumbnail}
+        height="600"
+        width="600"
+        loading="lazy"
+        className="object-contain object-left-top absolute h-full w-full inset-0"
+        alt={product.title}
+      />
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
       <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
         {product.title}
