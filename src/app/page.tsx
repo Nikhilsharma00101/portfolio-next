@@ -16,7 +16,10 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <Hero />
+      <section id="hero">
+        <Hero />
+      </section>
+      
 
       {/* About Section */}
       <section id="about">
