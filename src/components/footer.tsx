@@ -102,9 +102,17 @@ export default function Footer() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-2xl md:text-3xl font-bold font-heading bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 drop-shadow-lg"
+            
           >
-            ★彡[ɴɪᴋʜɪʟ ꜱʜᴀʀᴍᴀ]彡★
+            <h1 className="text-xs md:text-xl font-bold tracking-wide text-white drop-shadow-md">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400">
+                ★彡
+              </span>
+              [ɴɪᴋʜɪʟ ꜱʜᴀʀᴍᴀ]
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400">
+                彡★
+              </span>
+            </h1>
           </Link>
 
           {/* Social Links */}

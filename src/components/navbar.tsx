@@ -18,9 +18,9 @@ export default function Navbar() {
 
   const links = [
     { href: "/", label: "HOME", icon: <Home size={18} /> },
-    { href: "/about", label: "ABOUT", icon: <User size={18} /> },
-    { href: "/projects", label: "PROJECTS", icon: <FolderGit2 size={18} /> },
-    { href: "/testimonials", label: "TESTIMONIALS", icon: <Quote size={18} /> },
+    { href: "#about", label: "ABOUT", icon: <User size={18} /> },
+    { href: "#projects", label: "PROJECTS", icon: <FolderGit2 size={18} /> },
+    { href: "#testimonials", label: "TESTIMONIALS", icon: <Quote size={18} /> },
   ];
 
   return (
@@ -86,7 +86,7 @@ export default function Navbar() {
           </ul>
 
           {/* CTA (Desktop Only) */}
-          <Link href="/contact" className="group relative hidden md:block">
+          <Link href="#contact" className="group relative hidden md:block">
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500">
               <SparklesCore
                 background="transparent"
@@ -114,7 +114,7 @@ export default function Navbar() {
           </Link>
 
           {/* CTA (Mobile Only - Top Right) */}
-          <Link href="/contact" className="md:hidden block">
+          <Link href="#contact" className="md:hidden block">
             <HoverBorderGradient
               containerClassName="rounded-lg"
               className="px-3 py-1 text-white bg-black rounded-md shadow shadow-blue-500/20 text-sm"

@@ -177,11 +177,11 @@ export default function ProjectCarousel() {
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute bottom-[-20px] left-[41%] transform -translate-x-1/2 z-20"
+              className="absolute bottom-[-40px] md:bottom-[-20px] left-[41%] transform -translate-x-1/2 z-20"
             >
               <motion.button
                 whileHover={{ scale: 1.1, boxShadow: "0 0 20px cyan, 0 0 40px blue" }}
-                onClick={() => (window.location.href = "/projects")}
+                onClick={() => (window.location.href = "#hero")}
                 className="px-6 py-3 bg-black text-white font-bold rounded-full shadow-[0_0_20px_cyan,0_0_40px_blue] border border-cyan-400 font-heading"
               >
                 🚀 See More Projects

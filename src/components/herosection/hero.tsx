@@ -3,107 +3,64 @@ import React from "react";
 import { HeroParallax } from "@/components/ui/hero-parallax";
 
 export default function Hero() {
-  return <HeroParallax products={products} />;
+  return <HeroParallax products={projects} />;
 }
 
-const products = [
+const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+
+const projects = [
   {
     id: "proj-001",
-    title: "Business",
-    thumbnail: "/images/hero/rogue-motors.svg",
-    videoUrl:
-      "https://res.cloudinary.com/<your-cloud-name>/video/upload/f_auto,q_auto,br_auto/portfolio/videos/rogue-motors.mp4",
+    title: "Rogue Motors - Car Company Website",
+    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/rogue-motors_cpxu0j.svg`,
+    videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758738802/KarBhawan_Car_Accessories_Expert_Doorstep_Installation_Delhi_-_Google_Chrome_2025-09-23_19-52-43_-_COMPRESS_c6xzqh.mp4`,
   },
   {
     id: "proj-002",
-    title: "E-commerce",
-    thumbnail: "/images/hero/karbhawan-next.svg",
-    videoUrl:
-      "https://res.cloudinary.com/dyk47o3ai/video/upload/v1758737807/Karbhawan_-_Opera_2025-09-23_17-32-55_-_COMPRESS_i6jrgw.mp4",
+    title: "Karbhawan - Premium Car Accessories E-commerce",
+    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/karbhawan-next_dkk2xa.svg`,
+    videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758737807/Karbhawan_-_Opera_2025-09-23_17-32-55_-_COMPRESS_i6jrgw.mp4`,
   },
   {
     id: "proj-003",
-    title: "Landing page",
-    thumbnail: "/images/hero/premium-landing-page.svg",
-    videoUrl:
-      "https://res.cloudinary.com/<your-cloud-name>/video/upload/f_auto,q_auto,br_auto/portfolio/videos/premium-page.mp4",
+    title: "Premium Landing Page - Advocates & Law Firms",
+    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/premium-landing-page_akb5tm.svg`,
+    videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758739259/landing-page-premium_-_Opera_2025-09-23_17-06-10_-_COMPRESS_qezahm.mp4`,
   },
   {
     id: "proj-004",
-    title: "Static Website",
-    thumbnail: "/images/hero/buydsc.svg",
-    videoUrl:
-      "https://res.cloudinary.com/<your-cloud-name>/video/upload/f_auto,q_auto,br_auto/portfolio/videos/buydsc.mp4",
+    title: "buydsc - Static Website",
+    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/buydsc_thf3jq.svg`,
+    videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758739480/Home_-_Opera_2025-09-23_19-04-17_-_COMPRESS_yflyzq.mp4`,
   },
   {
     id: "proj-005",
-    title: "Portfolio",
-    thumbnail: "/images/hero/portfolio.svg",
-    videoUrl:
-      "https://res.cloudinary.com/<your-cloud-name>/video/upload/f_auto,q_auto,br_auto/portfolio/videos/portfolio.mp4",
+    title: "Premium Portfolio",
+    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/Group_1_podofv.jpg`,
+    videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758739173/Royal_Portfolio_-_Opera_2025-09-23_20-14-45_-_COMPRESS_fjyxng.mp4`,
   },
   {
     id: "proj-006",
-    title: "Basic Landing page",
-    thumbnail: "/images/hero/basic-page.png",
-    videoUrl:
-      "https://res.cloudinary.com/<your-cloud-name>/video/upload/f_auto,q_auto,br_auto/portfolio/videos/basic-page.mp4",
+    title: "Basic Landing Page",
+    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/basic-page_lkuyuh.png`,
+    videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758739385/Landing_Page_Basic_-_Google_Chrome_2025-09-23_20-30-12_zrnuqg.mp4`,
   },
   {
     id: "proj-007",
-    title: "Law Firm",
-    thumbnail: "/images/hero/lawfirm.svg",
-    videoUrl:
-      "https://res.cloudinary.com/<your-cloud-name>/video/upload/f_auto,q_auto,br_auto/portfolio/videos/law-firm.mp4",
+    title: "Standard Law Firm Landing Page",
+    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/lawfirm_tizs4m.svg`,
+    videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758739517/Standard_Landing_Page_-_Opera_2025-09-23_19-59-41_amfy66.mp4`,
   },
   {
     id: "proj-008",
     title: "Skillnox - Mobile APP",
-    thumbnail: "/images/hero/skillnox.svg",
-    videoUrl:
-      "https://res.cloudinary.com/<your-cloud-name>/video/upload/f_auto,q_auto,br_auto/portfolio/videos/skillnox.mp4",
+    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/skillnox_wbttdr.svg`,
+    videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758739660/Untitled_design_ta3wxx.mp4`,
   },
   {
     id: "proj-009",
-    title: "NyaySena",
-    thumbnail: "/images/hero/nyaysena.svg",
-    videoUrl:
-      "https://res.cloudinary.com/<your-cloud-name>/video/upload/f_auto,q_auto,br_auto/portfolio/videos/nyaysena.mp4",
+    title: "NyaySena - Law Firm Website",
+    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/nyaysena_d9na0f.svg`,
+    videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758739590/Landing_Page_-_Google_Chrome_2025-09-24_00-48-49_jy7vk3.mp4`,
   },
-  // {
-  //   id: "proj-010",
-  //   title: "SmartBridge",
-  //   thumbnail: "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
-  //   videoUrl: "https://res.cloudinary.com/<your-cloud-name>/video/upload/f_auto,q_auto,br_auto/portfolio/videos/smartbridge.mp4",
-  // },
-  // {
-  //   id: "proj-011",
-  //   title: "Renderwork Studio",
-  //   thumbnail: "https://aceternity.com/images/products/thumbnails/new/renderwork.png",
-  //   videoUrl: "https://res.cloudinary.com/<your-cloud-name>/video/upload/f_auto,q_auto,br_auto/portfolio/videos/renderwork-studio.mp4",
-  // },
-  // {
-  //   id: "proj-012",
-  //   title: "Creme Digital",
-  //   thumbnail: "https://aceternity.com/images/products/thumbnails/new/cremedigital.png",
-  //   videoUrl: "https://res.cloudinary.com/<your-cloud-name>/video/upload/f_auto,q_auto,br_auto/portfolio/videos/creme-digital.mp4",
-  // },
-  // {
-  //   id: "proj-013",
-  //   title: "Golden Bells Academy",
-  //   thumbnail: "https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
-  //   videoUrl: "https://res.cloudinary.com/<your-cloud-name>/video/upload/f_auto,q_auto,br_auto/portfolio/videos/golden-bells-academy.mp4",
-  // },
-  // {
-  //   id: "proj-014",
-  //   title: "Invoker Labs",
-  //   thumbnail: "https://aceternity.com/images/products/thumbnails/new/invoker.png",
-  //   videoUrl: "https://res.cloudinary.com/<your-cloud-name>/video/upload/f_auto,q_auto,br_auto/portfolio/videos/invoker-labs.mp4",
-  // },
-  // {
-  //   id: "proj-015",
-  //   title: "E Free Invoice",
-  //   thumbnail: "https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
-  //   videoUrl: "https://res.cloudinary.com/<your-cloud-name>/video/upload/f_auto,q_auto,br_auto/portfolio/videos/e-free-invoice.mp4",
-  // },
 ];

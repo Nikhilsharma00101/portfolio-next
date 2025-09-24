@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Sparkles, Moon, Rocket } from "lucide-react"; // using lucide icons
+import { Sparkles, Moon, Rocket } from "lucide-react";
 
 interface Skill {
   name: string;
@@ -12,24 +12,24 @@ interface Skill {
 }
 
 const frontendSkills: Skill[] = [
-  { name: "React", desc: "Building dynamic UIs", icon: "/images/logos/react.svg" },
-  { name: "Next.js", desc: "Fullstack apps with Next.js", icon: "/images/logos/nextjs.svg" },
-  { name: "Tailwind", desc: "Crafting responsive designs", icon: "/images/logos/tailwindcss.svg" },
-  { name: "TypeScript", desc: "Typed JavaScript", icon: "/images/logos/typescript.svg" },
+  { name: "React", desc: "Building dynamic and interactive UIs", icon: "/images/logos/react.svg" },
+  { name: "Next.js", desc: "Fullstack apps with server-side rendering and routing", icon: "/images/logos/nextjs.svg" },
+  { name: "Tailwind", desc: "Crafting responsive, modern designs quickly", icon: "/images/logos/tailwindcss.svg" },
+  { name: "TypeScript", desc: "Typed JavaScript for safer and scalable code", icon: "/images/logos/typescript.svg" },
 ];
 
 const backendSkills: Skill[] = [
-  { name: "Node.js", desc: "Backend APIs", icon: "/images/logos/nodejs.svg" },
-  { name: "Express", desc: "Fast server framework", icon: "/images/logos/expressjs.png" },
-  { name: "MongoDB", desc: "Scalable NoSQL DB", icon: "/images/logos/mongodb.svg" },
-  { name: "GraphQL", desc: "API query language", icon: "/images/logos/graphql.svg" },
+  { name: "Node.js", desc: "JavaScript runtime for server-side logic", icon: "/images/logos/nodejs.svg" },
+  { name: "Express", desc: "Minimal and fast Node.js web framework", icon: "/images/logos/expressjs.png" },
+  { name: "MongoDB", desc: "Flexible NoSQL database for scalable applications", icon: "/images/logos/mongodb.svg" },
+  { name: "Firebase", desc: "Realtime database, authentication, and cloud functions", icon: "/images/logos/Firebase.svg" },
 ];
 
 const toolsSkills: Skill[] = [
-  { name: "Git", desc: "Version control expertise", icon: "/images/logos/git.svg" },
-  { name: "Redux", desc: "State management", icon: "/images/logos/redux.svg" },
-  { name: "Cloudinary", desc: "Image & media hosting", icon: "/images/logos/cloudinary.svg" },
-  { name: "Docker", desc: "Containerization", icon: "/images/logos/docker.svg" },
+  { name: "Git", desc: "Version control for tracking and collaboration", icon: "/images/logos/git.svg" },
+  { name: "Figma", desc: "UI/UX design and prototyping tool", icon: "/images/logos/figma.svg" },
+  { name: "Cloudinary", desc: "Cloud media storage and optimization platform", icon: "/images/logos/cloudinary.svg" },
+  { name: "Vercel", desc: "Deploy frontend and fullstack apps seamlessly", icon: "/images/logos/Vercel.svg" },
 ];
 
 export default function OrbitingSkills() {
@@ -64,8 +64,8 @@ export default function OrbitingSkills() {
 
   return (
     <section className="relative w-full h-[900px] bg-black flex flex-col items-center justify-center overflow-hidden mt-20">
-      {/* Themed Tabs */}
-      <div className="absolute top-5 flex space-x-4 z-30">
+      {/* Tabs */}
+      <div className="absolute top-5 flex space-x-2 md:space-x-4 z-30">
         {tabConfig.map((tab) => (
           <motion.button
             key={tab.key}
@@ -74,7 +74,7 @@ export default function OrbitingSkills() {
               setTabKey((prev) => prev + 1);
             }}
             whileHover={{ scale: 1.1, boxShadow: "0 0 20px rgba(0,255,255,0.6)" }}
-            className={`px-5 py-2 rounded-full font-semibold flex items-center gap-2 transition-all border font-heading ${
+            className={`px-5 py-2 text-xs md:text-xl rounded-full font-semibold flex items-center gap-2 transition-all border font-heading ${
               activeTab === tab.key
                 ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-black border-cyan-400 animate-pulse"
                 : "bg-transparent border-cyan-600/40 text-cyan-200 hover:text-white hover:border-cyan-400"
@@ -108,7 +108,7 @@ export default function OrbitingSkills() {
               </div>
             </motion.div>
 
-            {/* Orbits + Planets */}
+            {/* Planets */}
             {getSkills().map((item, i) => {
               const baseRadius = 160;
               const gap = 60;
@@ -118,7 +118,7 @@ export default function OrbitingSkills() {
               const selfRotationDuration = 6;
 
               return (
-                <div
+                <motion.div
                   key={item.name}
                   className="absolute flex items-center justify-center pointer-events-none"
                   style={{
@@ -127,6 +127,8 @@ export default function OrbitingSkills() {
                     left: `calc(50% - ${orbitRadius}px)`,
                     top: `calc(50% - ${orbitRadius}px)`,
                   }}
+                  animate={{ rotate: 360 }}
+                  transition={{ repeat: Infinity, duration: orbitDuration, ease: "linear" }}
                 >
                   {/* Orbit Ring */}
                   <div
@@ -134,36 +136,35 @@ export default function OrbitingSkills() {
                     style={{ width: orbitRadius * 2, height: orbitRadius * 2 }}
                   />
 
-                  {/* Orbit Container */}
+                  {/* Planet wrapper */}
                   <div
-                    className="absolute top-0 left-0 w-full h-full animate-orbit"
-                    style={{ animationDuration: `${orbitDuration}s` }}
+                    className="absolute top-0 left-1/2 flex flex-col items-center"
+                    style={{ transform: `translateX(-50%) translateY(${-size / 2}px)` }}
                   >
-                    {/* Planet */}
+                    {/* Planet spinning itself */}
                     <div
-                      className="absolute flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 shadow-[0_0_30px_rgba(0,255,255,0.8)] cursor-pointer z-[60] pointer-events-auto animate-spin"
-                      style={{
-                        width: size,
-                        height: size,
-                        top: -size / 2,
-                        left: `calc(50% - ${size / 2}px)`,
-                        animationDuration: `${selfRotationDuration}s`,
-                      }}
+                      className="flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 shadow-[0_0_30px_rgba(0,255,255,0.8)] cursor-pointer z-[60] pointer-events-auto animate-spin"
+                      style={{ width: size, height: size, animationDuration: `${selfRotationDuration}s` }}
                       onMouseEnter={() => setHovered(item.name)}
                       onMouseLeave={() => setHovered(null)}
                     >
                       <Image src={item.icon} alt={item.name} width={size - 10} height={size - 10} />
-
-                      {/* Tooltip */}
-                      {hovered === item.name && (
-                        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-48 p-3 text-sm bg-black/80 backdrop-blur-md border border-cyan-500 text-cyan-100 rounded-lg shadow-xl z-[999]">
-                          <p className="font-bold">{item.name}</p>
-                          <p className="text-xs text-cyan-200 mt-1">{item.desc}</p>
-                        </div>
-                      )}
                     </div>
+
+                    {/* Tooltip (counter-rotate to stay upright) */}
+                    {hovered === item.name && (
+                      <motion.div
+                        className="absolute -top-16 left-1/2 w-48 p-3 text-sm bg-black/80 backdrop-blur-md border border-cyan-500 text-cyan-100 rounded-lg shadow-xl z-[999] text-center"
+                        style={{ transform: "translateX(-50%)" }}
+                        animate={{ rotate: -360 }}
+                        transition={{ repeat: Infinity, duration: orbitDuration, ease: "linear" }}
+                      >
+                        <p className="font-bold">{item.name}</p>
+                        <p className="text-xs text-cyan-200 mt-1">{item.desc}</p>
+                      </motion.div>
+                    )}
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </motion.div>
@@ -191,20 +192,6 @@ export default function OrbitingSkills() {
           />
         ))}
       </div>
-
-      {/* Orbit & Spin animations */}
-      <style jsx>{`
-        @keyframes orbit {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-        .animate-orbit { animation-name: orbit; animation-iteration-count: infinite; animation-timing-function: linear; }
-        .animate-spin { animation-name: spin; animation-iteration-count: infinite; animation-timing-function: linear; }
-      `}</style>
     </section>
   );
 }
