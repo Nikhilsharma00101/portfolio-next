@@ -46,6 +46,12 @@ export default function CertificateCarousel() {
     {
       name: "Professional",
       certificates: [
+        {
+          title: "IBM Full Stack Software Developer Professional Certificate – IBM / Coursera",
+          description:
+            "Completed IBM’s industry-recognized Full Stack Software Developer Professional Certificate on Coursera. Gained hands-on experience in front-end development (HTML, CSS, JavaScript, React), back-end development (Node.js, Express), and database management (MongoDB, SQL). Built and deployed full-stack applications using cloud services and containerization tools such as Docker and Kubernetes. Acquired practical knowledge in DevOps, version control (Git/GitHub), CI/CD, and cloud-native application deployment, demonstrating end-to-end development and deployment capabilities.",
+          image: "/images/certificates/professional/IBM.png"
+        },
         { title: "Introduction to Cloud Computing – IBM / Coursera", description: "Acquired foundational knowledge in cloud computing through IBM’s “Introduction to Cloud Computing” course on Coursera. Gained understanding of the essential characteristics, service models (IaaS, PaaS, SaaS), deployment models (public, private, hybrid), cloud infrastructure components (virtual machines, containers, storage), and emerging trends such as serverless computing, DevOps, cloud-native applications, and hybrid/multi-cloud strategies. Demonstrated ability to apply cloud security practices and monitor cloud environments.", image: "/images/certificates/professional/cloud.png" },
         { title: "Introduction to HTML, CSS & JavaScript – IBM / Coursera", description: "Accomplished IBM’s Coursera course introducing the foundations of web development. Covered structuring web pages with HTML, styling using CSS including responsive design, and adding interactivity via JavaScript (DOM manipulation, form validation, event handling). Hands-on labs and a final project reinforced applied skills and modern best practices.", image: "/images/certificates/professional/html.png" },
         { title: "Getting Started with Git & GitHub – IBM / Coursera", description: "Completed IBM’s introductory course on Git & GitHub, covering version control fundamentals including repositories, branches, forking, merging, pull requests, and collaboration workflows via both command-line and web interfaces. Culminated with a final project to build and share an open-source GitHub repository, reinforcing practical skills", image: "/images/certificates/professional/git.png" },
@@ -102,7 +108,7 @@ export default function CertificateCarousel() {
     <div className="flex flex-col items-center pb-20 relative pt-20">
       {/* Section Heading */}
       <span className="text-3xl md:text-5xl font-bold mb-10 text-center font-heading bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-transparent animate-gradient pb-5">
-          Astro Achievements & Certificates
+        Astro Achievements & Certificates
       </span>
 
       {/* Category Tabs */}
@@ -110,9 +116,8 @@ export default function CertificateCarousel() {
         {categories.map((cat, i) => (
           <button
             key={i}
-            className={`px-4 py-2 rounded-full font-medium transition ${
-              i === activeCategory ? "bg-blue-500 text-white" : "bg-black/40 text-gray-300 hover:bg-blue-400"
-            }`}
+            className={`px-4 py-2 rounded-full font-medium transition ${i === activeCategory ? "bg-blue-500 text-white" : "bg-black/40 text-gray-300 hover:bg-blue-400"
+              }`}
             onClick={() => {
               setActiveCategory(i);
               setIndex(0);
