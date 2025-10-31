@@ -40,6 +40,9 @@ export const HeroParallax = ({ products }: { products: Product[] }) => {
     >
       <Header />
       <motion.div style={{ rotateX, rotateZ, translateY, opacity }}>
+         <h2 className="text-center text-3xl md:text-5xl font-bold mb-12 pb-10 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-transparent animate-gradient font-heading">
+        My Projects
+      </h2>
         {firstRow.length > 0 && (
           <InfiniteRow
             products={firstRow}

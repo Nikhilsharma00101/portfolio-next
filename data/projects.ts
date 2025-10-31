@@ -7,6 +7,10 @@ export type Project = {
   videoHeight?: string;
   desc: string; // HTML string now
   techStack?: string[];
+  cta?: {
+    label: string;
+    link: string;
+  };
 };
 
 // Read cloud name from environment
@@ -16,7 +20,8 @@ export const projects: Project[] = [
   {
     id: "proj-001",
     title: "Rogue Motors - Car Company Website",
-    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/rogue-motors.svg`,
+    thumbnail: "/images/projects/rogue-motors.svg",
+    // thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/rogue-motors.svg`,
     videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758738802/KarBhawan_Car_Accessories_Expert_Doorstep_Installation_Delhi_-_Google_Chrome_2025-09-23_19-52-43_-_COMPRESS_c6xzqh.mp4`,
     videoWidth: "w-full max-w-3xl",
     videoHeight: "h-[400px] md:h-[380px]",
@@ -30,11 +35,17 @@ export const projects: Project[] = [
         <li><b style="color:#ffffff;">Future-Ready Vision:</b> Designed for scalability with potential expansion into e-commerce and booking systems.</li>
     `,
     techStack: ["React", "Firebase", "Cloudinary", "Tailwind CSS"],
+    cta: {
+      label: "View Live Site",
+      link: "https://karbhawan.vercel.app",
+    },
+    
   },
   {
     id: "proj-002",
     title: "Karbhawan - Premium Car Accessories E-commerce",
-    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/karbhawan-next.svg`,
+    thumbnail: "/images/projects/karbhawan.jpg",
+    // thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/karbhawan-next.svg`,
     videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758737807/Karbhawan_-_Opera_2025-09-23_17-32-55_-_COMPRESS_i6jrgw.mp4`,
     videoWidth: "w-full max-w-2xl",
     videoHeight: "h-[400px] md:h-[380px]",
@@ -49,11 +60,16 @@ export const projects: Project[] = [
         <li><b style="color:#ffffff;">Deployment:</b> Fully deployed on cloud infrastructure, production-ready and built for scale.</li>
     `,
     techStack: ["Next.js", "MongoDB", "Cloudinary", "Tailwind CSS", "Razorpay"],
+    cta: {
+      label: "View Live Site",
+      link: "https://karbhawan-next-client.vercel.app",
+    },
   },
   {
     id: "proj-003",
     title: "Premium Landing Page - Advocates & Law Firms",
-    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/premium-landing-page.svg`,
+    thumbnail: "/images/projects/premium-landing-page.jpg",
+    // thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/premium-landing-page.svg`,
     videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758739259/landing-page-premium_-_Opera_2025-09-23_17-06-10_-_COMPRESS_qezahm.mp4`,
     videoWidth: "w-full max-w-2xl",
     videoHeight: "h-[400px] md:h-[450px]",
@@ -67,11 +83,16 @@ export const projects: Project[] = [
         <li><b style="color:#ffffff;">Technology Stack:</b> Built with HTML, CSS, JS, and Tailwind for clean, maintainable code.</li>
     `,
     techStack: ["HTML", "CSS", "JavaScript", "Tailwind CSS", "Framer"],
+    cta: {
+      label: "View Live Site",
+      link: "https://landingpage-premium.vercel.app",
+    },
   },
   {
     id: "proj-004",
     title: "buydsc - Static Website",
-    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/buydsc.svg`,
+    thumbnail: "/images/projects/buydsc.svg",
+    // thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/buydsc.svg`,
     videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758739480/Home_-_Opera_2025-09-23_19-04-17_-_COMPRESS_yflyzq.mp4`,
     videoWidth: "w-full max-w-2xl",
     videoHeight: "h-[400px] md:h-[450px]",
@@ -85,11 +106,16 @@ export const projects: Project[] = [
         <li><b style="color:#ffffff;">Scalable & Reliable:</b> Optimized for high traffic and future-ready enhancements.</li>
     `,
     techStack: ["Bootstrap 5", "HTML", "CSS", "JavaScript"],
+    cta: {
+      label: "View Live Site",
+      link: "https://buydsc.net",
+    },
   },
   {
     id: "proj-005",
     title: "Premium Portfolio",
-    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/Group_1.jpg`,
+    thumbnail: "/images/projects/portfolio.jpg",
+    // thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/Group_1.jpg`,
     videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758739173/Royal_Portfolio_-_Opera_2025-09-23_20-14-45_-_COMPRESS_fjyxng.mp4`,
     videoWidth: "w-full max-w-3xl",
     videoHeight: "h-[400px] md:h-[600px]",
@@ -103,11 +129,16 @@ export const projects: Project[] = [
         <li><b style="color:#ffffff;">User Experience:</b> Premium UI with engaging transitions to showcase skills and projects effectively.</li>
     `,
     techStack: ["HTML", "CSS", "JavaScript", "Tailwind CSS", "Framer Motion"],
+    cta: {
+      label: "View Live Site",
+      link: "https://portfolio-ten-mu-cg4juvi6xt.vercel.app",
+    },
   },
   {
     id: "proj-006",
     title: "Basic Landing Page",
-    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/basic-page.png`,
+    thumbnail: "/images/projects/basic-page.png",
+    // thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/basic-page.png`,
     videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758739385/Landing_Page_Basic_-_Google_Chrome_2025-09-23_20-30-12_zrnuqg.mp4`,
     videoWidth: "w-full max-w-3xl",
     videoHeight: "h-[400px] md:h-[600px]",
@@ -121,11 +152,16 @@ export const projects: Project[] = [
         <li><b style="color:#ffffff;">Foundation for Growth:</b> Ideal as a starter template for portfolios, startups, or business websites.</li>
     `,
     techStack: ["HTML", "CSS", "JavaScript"],
+    cta: {
+      label: "View Live Site",
+      link: "https://landingpage-basic.vercel.app",
+    },
   },
   {
     id: "proj-007",
     title: "Standard Law Firm Landing Page",
-    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/lawfirm.svg`,
+    thumbnail: "/images/projects/standard-page.svg",
+    // thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/lawfirm.svg`,
     videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758739517/Standard_Landing_Page_-_Opera_2025-09-23_19-59-41_amfy66.mp4`,
     videoWidth: "w-full max-w-3xl",
     videoHeight: "h-[400px] md:h-[600px]",
@@ -139,11 +175,16 @@ export const projects: Project[] = [
         <li><b style="color:#ffffff;">Scalable Foundation:</b> Easily extendable into a full website with dynamic features.</li>
     `,
     techStack: ["React", "Next.js", "Tailwind CSS"],
+    cta: {
+      label: "View Live Site",
+      link: "https://landingpage-standard.vercel.app",
+    },
   },
   {
     id: "proj-008",
     title: "Skillnox - Mobile APP",
-    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/skillnox.svg`,
+    thumbnail: "/images/projects/skillnox.jpg",
+    // thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/skillnox.svg`,
     videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758739660/Untitled_design_ta3wxx.mp4`,
     videoWidth: "max-w-4xl",
     videoHeight: "h-[100px] md:h-[400px]",
@@ -161,7 +202,8 @@ export const projects: Project[] = [
   {
     id: "proj-009",
     title: "NyaySena - Law Firm Website",
-    thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/nyaysena.svg`,
+    thumbnail: "/images/projects/law-firm.png",
+    // thumbnail: `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/w_400,h_250,c_fill,q_auto,f_auto/nyaysena.svg`,
     videoUrl: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1758739590/Landing_Page_-_Google_Chrome_2025-09-24_00-48-49_jy7vk3.mp4`,
     videoWidth: "max-w-4xl",
     videoHeight: "h-[100px] md:h-[400px]",
@@ -175,5 +217,9 @@ export const projects: Project[] = [
         <li><b style="color:#ffffff;">Future-Ready:</b> Scalable foundation with the flexibility to integrate dynamic features.</li>
     `,
     techStack: ["HTML", "CSS", "Javascript", "Tailwind CSS"],
+    cta: {
+      label: "View Live Site",
+      link: "https://karbhawan.vercel.app",
+    },
   },
 ];

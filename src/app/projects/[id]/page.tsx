@@ -3,6 +3,10 @@ import { useParams } from "next/navigation";
 import React from "react";
 import { projects, Project } from "../../../../data/projects";
 import Link from "next/link";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import { SparklesCore } from "@/components/ui/sparkles";
+import { ExternalLink } from "lucide-react";
+
 
 export default function ProjectPage() {
   const params = useParams();
@@ -68,32 +72,59 @@ export default function ProjectPage() {
         ) : null}
       </div>
 
-      
-{/* Related Projects Carousel */}
-<div className="mt-16 w-full max-w-6xl">
-  <h2 className="text-3xl font-semibold mb-6 text-center bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-transparent animate-gradient font-heading">
-    More Projects
-  </h2>
-  <div className="flex gap-6 overflow-x-auto pb-4">
-    {projects
-      .filter((p: Project) => p.id !== project.id)
-      .slice(0, 3)
-      .map((p: Project) => (
-        <Link
-          key={p.id}
-          href={`/projects/${p.id}`} // ✅ Dynamic navigation
-          className="min-w-[250px] bg-white/5 rounded-xl p-4 flex flex-col items-center hover:bg-white/10 transition"
-        >
-          <img
-            src={p.thumbnail}
-            alt={p.title}
-            className="h-32 object-contain mb-4"
-          />
-          <p className="text-lg font-medium text-center">{p.title}</p>
-        </Link>
-      ))}
-  </div>
-</div>
+      {project.cta && (
+        <div className="mt-6 flex justify-center">
+          <Link
+            href={project.cta.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative"
+          >
+          
+            {/* The main button */}
+            <HoverBorderGradient
+              containerClassName="rounded-lg"
+              className="relative flex items-center gap-2 px-6 py-2 text-white bg-black rounded-lg shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-all duration-500"
+            >
+              <span className="relative flex items-center gap-2">
+                <span className="transition-all duration-300 group-hover:opacity-0">
+                  <ExternalLink size={18} />
+                </span>
+                <span className="tracking-wide font-medium">{project.cta.label}</span>
+              </span>
+            </HoverBorderGradient>
+          </Link>
+        </div>
+      )}
+
+
+
+
+      {/* Related Projects Carousel */}
+      <div className="mt-16 w-full max-w-6xl">
+        <h2 className="text-3xl font-semibold mb-6 text-center bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 bg-clip-text text-transparent animate-gradient font-heading">
+          More Projects
+        </h2>
+        <div className="flex gap-6 overflow-x-auto pb-4">
+          {projects
+            .filter((p: Project) => p.id !== project.id)
+            .slice(0, 3)
+            .map((p: Project) => (
+              <Link
+                key={p.id}
+                href={`/projects/${p.id}`} //  Dynamic navigation
+                className="min-w-[250px] bg-white/5 rounded-xl p-4 flex flex-col items-center hover:bg-white/10 transition"
+              >
+                <img
+                  src={p.thumbnail}
+                  alt={p.title}
+                  className="h-32 object-contain mb-4"
+                />
+                <p className="text-lg font-medium text-center">{p.title}</p>
+              </Link>
+            ))}
+        </div>
+      </div>
     </div>
   );
 }
